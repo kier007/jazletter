@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Postcard Letter</title>
+    <style>
+        body {
+            background-color: #f8f8f8;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        
+        .envelope {
+            width: 300px;
+            height: 200px;
+            background-image: url('old_paper.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .envelope:hover {
+            transform: scale(1.05);
+        }
+        
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 260px;
+            height: 160px;
+            background-color: #f2e4bc;
+            z-index: -1;
+        }
+        
+        .envelope::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background-color: #806c39;
+        }
+        
+        .envelope-address {
+          font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #806c39;
+        }
+        
+        .envelope-address strong {
+            font-weight: bold;
+        }
+        
+        .envelope-stamp {
+          font-family: 'Courier New', Courier, monospace;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            background-color: #806c39;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 12px;
+            line-height: 50px;
+        }
+        
+        .envelope-text {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            z-index: 9999;
+            overflow: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .envelope-letter-content {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .envelope-letter-content h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .envelope-letter-content p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope" onclick="showLetter()">
+        <div class="envelope-address">
+            <strong>Recipient:</strong> John Doe<br>
+            <strong>Address:</strong> 123 Main St, City, State
+        </div>
+        <div class="envelope-stamp">
+            Stamp
+        </div>
+    </div>
+    
+    <div class="envelope-text" onclick="hideLetter()">
+        <div class="envelope-letter-content">
+            <h2>Postcard Letter</h2>
+            <p>Dear Friend,</p>
+            <p>I hope this letter finds you in good health and high spirits. It's been a while since we last met, and I wanted to take a moment to send you this postcard to let you know that you're always in my thoughts.</p>
+            <p>The days are passing by, and life continues its unpredictable journey. I miss the conversations we used to have and the laughter we shared. Our memories together are like cherished treasures, reminding me of the joyous times we spent.</p>
+            <p>Remember that life is a series of beautiful moments, and even though we may be physically apart, our bond remains unbreakable. I eagerly look forward to the day we can reunite and create new memories together.</p>
+            <p>Until then, take care of yourself and keep shining your light upon the world. May happiness and success accompany you in all your endeavors.</p>
+            <p>With warmest regards,</p>
+            <p>Your Name</p>
+        </div>
+    </div>
+
+    <script>
+        function showLetter() {
+            var letter = document.querySelector('.envelope-text');
+            letter.style.display = 'block';
+        }
+        
+        function hideLetter() {
+            var letter = document.querySelector('.envelope-text');
+            letter.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
